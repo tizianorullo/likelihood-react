@@ -28,6 +28,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="container">
+        <div className="meta clearfix">
           <Budget
             budget={this.state.budget}
             onBudgetChange={(budget) => this.updateBudget(budget)}
@@ -36,6 +37,7 @@ class App extends React.Component {
             rate={this.state.rate}
             onRateChange={(rate) => this.updateRate(rate)}
           />
+        </div>
         <FeatureList
           ids={this.state.ids}
           features={this.state.features}
