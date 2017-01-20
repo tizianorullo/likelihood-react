@@ -1,8 +1,11 @@
-# Likelihood React
-
-##Getting Started##
+# likelihood-react
 
 ```
-	> npm install
-	> npm start
+	npm install
+	npm start
+```
+
+server running at
+```
+	https://localhost:8008
 ```
