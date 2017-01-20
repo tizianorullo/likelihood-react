@@ -47,6 +47,10 @@ class App extends React.Component {
           onDeleteFeature={(id) => this.deleteFeature(id)}
           onAddFeature={() => this.addFeature()}
           onSortEnd={(event) => this.draggedFeature(event)}
+          useDragHandle={true}
+          lockAxis='y'
+          transitionDuration={0}
+          helperClass="drag-helper"
         />
       </div>
     )
@@ -80,8 +84,6 @@ class App extends React.Component {
   }
 
   draggedFeature(event) {
-    console.log(event);
-    console.log(this.state.ids[event.oldIndex]);
     this.reorderFeature(this.state.ids[event.oldIndex], event.newIndex)
   }
 

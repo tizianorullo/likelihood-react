@@ -18,7 +18,6 @@ const FeatureList = SortableContainer(props => {
       onFeatureDown={props.onFeatureDown}
       onDeleteFeature={props.onDeleteFeature}
       onSortEnd={props.onSortEnd}
-      useDragHandle={true}
     />
   })
 
@@ -31,7 +30,7 @@ const FeatureList = SortableContainer(props => {
             <th>Best case</th>
             <th>Worst case</th>
             <th>Likelihood</th>
-            <th colSpan="3"></th>
+            <th colSpan="2"></th>
           </tr>
         </thead>
         <tbody>

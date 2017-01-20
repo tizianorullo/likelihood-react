@@ -1,5 +1,6 @@
 input {
-  margin-right: 1.5rem
+  margin-right: 1.5rem;
+  margin-bottom: 0;
 }
 
 table input,
@@ -31,4 +32,13 @@ button {
 
 .drag-handle:active {
   cursor: grabbing;
+}
+
+.drag-helper {
+  cursor: grabbing;
+  background-color: white;
+}
+
+.drag-helper td {
+  border-bottom-width: 0;
 }

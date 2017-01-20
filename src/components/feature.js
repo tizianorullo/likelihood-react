@@ -2,10 +2,13 @@ import React from 'react'
 import {SortableElement, SortableHandle} from 'react-sortable-hoc'
 
 const Feature = SortableElement((props) => {
-  return <Item {...props}/>
+  return <Item
+    {...props}
+    useDragHandle={true}
+  />
 })
 
-const DragHandle = SortableHandle(() => <button className="button-small drag-handle">↕️↕️</button>)
+const DragHandle = SortableHandle(() => <span className="button-small drag-handle">↕️↕️</span>)
 
 class Item extends React.Component {
   render() {
