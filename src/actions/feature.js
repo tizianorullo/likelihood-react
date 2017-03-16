@@ -17,9 +17,10 @@ export function sortFeature(oldIndex, newIndex) {
   }
 }
 
-export function addFeature() {
+export function addFeature(id) {
   return {
-    type: FEATURE_ADD
+    type: FEATURE_ADD,
+    payload: id
   }
 }
 
