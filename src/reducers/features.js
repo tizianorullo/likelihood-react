@@ -19,8 +19,7 @@ const initialState = [
 export default function(state = initialState, action) {
   switch (action.type) {
     case FEATURE_ADD:
-      const id = Math.max(...state.map(feature => feature.id)) + 1
-      return state.concat([{id}])
+      return state.concat([{id: action.payload}])
       break
     case FEATURE_DELETE:
       return state.filter(feature => feature.id !== action.payload.id)

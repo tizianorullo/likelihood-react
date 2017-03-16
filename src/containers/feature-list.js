@@ -42,6 +42,10 @@ class List extends Component {
     return state
   }
 
+  nextId() {
+    return Math.max(...this.props.features.map(feature => feature.id)) + 1
+  }
+
   renderFeatures() {
     return this.props.features.map((feature, index) => {
       return <Feature
@@ -71,7 +75,7 @@ class List extends Component {
           </tbody>
         </table>
         <button
-          onClick={event => props.addFeature()}
+          onClick={event => this.props.addFeature(this.nextId())}
         >Add</button>
       </div>
     )
