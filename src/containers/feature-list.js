@@ -4,7 +4,7 @@ import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 
 import Feature from './feature'
-import {addFeature, sortFeature} from '../actions/feature'
+import {addFeature, sortFeature, fetchFeatures} from '../actions/feature'
 
 class List extends Component {
   constructor(props) {
@@ -44,6 +44,10 @@ class List extends Component {
 
   nextId() {
     return Math.max(...this.props.features.map(feature => feature.id)) + 1
+  }
+
+  componentDidMount() {
+    // this.props.fetchFeatures()
   }
 
   renderFeatures() {
@@ -102,7 +106,7 @@ function mapStateToProps({budget, rate, features}) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({addFeature, sortFeature}, dispatch)
+  return bindActionCreators({addFeature, sortFeature, fetchFeatures}, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(FeatureList)
