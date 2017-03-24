@@ -18,8 +18,8 @@ class Rate extends Component {
   }
 }
 
-function mapStateToProps({rate}) {
-  return {rate}
+function mapStateToProps({projects, selectedProjectId}) {
+  return {rate: projects[selectedProjectId].rate}
 }
 
 function mapDispatchToProps(dispatch) {

@@ -1,14 +1,11 @@
 import {BUDGET_UPDATE} from '../actions/budget'
 
-const initialState = 10
-
-export default function(state = initialState, action) {
+export default function(state = 0, action) {
   switch (action.type) {
     case BUDGET_UPDATE:
       return action.payload
       break
     default:
-
+      return state
   }
-  return state
 }

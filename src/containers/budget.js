@@ -18,8 +18,8 @@ class Budget extends Component {
   }
 }
 
-function mapStateToProps({budget}) {
-  return {budget}
+function mapStateToProps({projects, selectedProjectId}) {
+  return {budget: projects[selectedProjectId].budget}
 }
 
 function mapDispatchToProps(dispatch) {

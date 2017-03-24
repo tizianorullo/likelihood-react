@@ -75,7 +75,7 @@ class List extends Component {
             </tr>
           </thead>
           <tbody>
-            {this.renderFeatures()}
+            { this.renderFeatures() }
           </tbody>
         </table>
         <button
@@ -101,8 +101,13 @@ function FeatureList(props) {
   )
 }
 
-function mapStateToProps({budget, rate, features}) {
-  return {budget, rate, features}
+function mapStateToProps({projects, selectedProjectId}) {
+  const project = projects[selectedProjectId]
+  return {
+    budget: project.budget,
+    rate: project.rate,
+    features: project.features
+  }
 }
 
 function mapDispatchToProps(dispatch) {

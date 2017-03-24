@@ -1,29 +1,14 @@
 import {arrayMove} from 'react-sortable-hoc'
 
 import {
-  FEATURE_FETCH,
   FEATURE_ADD,
   FEATURE_DELETE,
   FEATURE_UPDATE,
   FEATURE_SORT
 } from '../actions/feature'
 
-const initialState = [
-  {id: 1, name: 'My Feature 1', best: 1, worst: 2},
-  {id: 2, name: 'My Feature 2', best: 2, worst: 3},
-  {id: 3, name: 'My Feature 3', best: 1, worst: 3},
-  {id: 4, name: 'My Feature 4', best: 3, worst: 5},
-  {id: 5, name: 'My Feature 5', best: 2, worst: 4},
-  {id: 6, name: 'My Feature 6', best: 1, worst: 7}
-]
-
-// const initialState = [];
-
-export default function(state = initialState, action) {
+export default function(state = [], action) {
   switch (action.type) {
-    case FEATURE_FETCH:
-        return action.payload
-      break
     case FEATURE_ADD:
       return state.concat([{id: action.payload}])
       break
