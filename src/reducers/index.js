@@ -1,6 +1,5 @@
 import ProjectReducer from './project'
-import {PROJECT_ADD} from '../actions/project'
-import {PROJECT_SELECT} from '../actions/project'
+import {PROJECT_FETCH, PROJECT_ADD, PROJECT_SELECT} from '../actions/project'
 
 const initialState = {
   selectedProjectId: null,
@@ -9,6 +8,12 @@ const initialState = {
 
 function RootReducer(state = initialState, action) {
   switch (action.type) {
+    case PROJECT_FETCH:
+      return {
+        ...state,
+        projects: action.payload
+      }
+      break;
     case PROJECT_ADD:
       return {
         ...state,

@@ -6,10 +6,11 @@ import thunk from 'redux-thunk'
 
 import App from './components/app'
 import reducers from './reducers'
+import firebase from './middlewares/firebase'
 
 const store = createStore(
   reducers,
-  applyMiddleware(thunk)
+  applyMiddleware(thunk, firebase)
 );
 
 ReactDOM.render(

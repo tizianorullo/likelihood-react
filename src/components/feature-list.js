@@ -43,6 +43,9 @@ class List extends Component {
   }
 
   nextId() {
+    if(!this.props.features.length) {
+      return 0;
+    }
     return Math.max(...this.props.features.map(feature => feature.id)) + 1
   }
 
