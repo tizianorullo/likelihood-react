@@ -1,7 +1,9 @@
-import firebase from 'firebase';
+import firebase from 'firebase'
 
 import {PROJECT_ADD, PROJECT_FETCH} from '../actions/project'
-import {FEATURE_UPDATE} from '../actions/feature'
+import {FEATURE_UPDATE, FEATURE_DELETE} from '../actions/feature'
+import {BUDGET_UPDATE} from '../actions/budget'
+import {RATE_UPDATE} from '../actions/rate'
 
 const config = {
   apiKey: "AIzaSyC43umHbsRhAUzieJYyEdcyWCcvGWNbpp4",
@@ -9,8 +11,8 @@ const config = {
   databaseURL: "https://likelihood-59000.firebaseio.com"
 }
 
-firebase.initializeApp(config);
-const db = firebase.database();
+firebase.initializeApp(config)
+const db = firebase.database()
 
 const firebaseMiddleware = store => next => action => {
   switch (action.type) {
@@ -18,15 +20,32 @@ const firebaseMiddleware = store => next => action => {
       db.ref('/projects').once('value', snap => {
         next({...action, payload: snap.val()})
       })
-      break;
+      break
     case PROJECT_ADD:
-    console.log('click');
-      db.ref('/projects/' + action.payload.id).set(action.payload).then(next(action))
-      break;
+      db.ref('/projects/' + action.payload.id)
+        .set(action.payload)
+        .then(next(action))
+      break
     case FEATURE_UPDATE:
-    console.log(action.payload);
-      console.log(store.getState());
-      break;
+      db.ref('/projects/' + store.getState().selectedProjectId + '/features/' + action.payload.id)
+        .set(action.payload)
+        .then(next(action))
+      break
+    case FEATURE_DELETE:
+      db.ref('/projects/' + store.getState().selectedProjectId + '/features/' + action.payload.id)
+        .remove()
+        .then(next(action))
+      break
+    case BUDGET_UPDATE:
+      db.ref('/projects/' + store.getState().selectedProjectId + '/budget')
+        .set(action.payload)
+        .then(next(action))
+      break
+    case RATE_UPDATE:
+      db.ref('/projects/' + store.getState().selectedProjectId + '/rate')
+        .set(action.payload)
+        .then(next(action))
+      break
     default:
       next(action)
   }
