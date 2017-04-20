@@ -25,4 +25,4 @@ module.exports = {
     port: 8008
   },
   devtool: 'source-map'
-};
+}

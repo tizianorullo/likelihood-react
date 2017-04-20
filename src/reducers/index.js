@@ -13,13 +13,13 @@ function RootReducer(state = initialState, action) {
         ...state,
         projects: action.payload
       }
-      break;
+      break
     case PROJECT_ADD:
       return {
         ...state,
         projects: state.projects.concat(action.payload)
       }
-      break;
+      break
     case PROJECT_SELECT:
       return {
         ...state,

@@ -7,14 +7,14 @@ import {fetchProjects, addProject, selectProject} from '../actions/project'
 class ProjectManager extends Component {
   nextId() {
     if (!this.props.projects) {
-      return 0;
-    };
+      return 0
+    }
     return Math.max(...this.props.projects.map(feature => feature.id)) + 1
   }
 
   renderProjects() {
     if (!this.props.projects) {
-      return;
+      return
     }
     return this.props.projects.map(project => {
       return <option key={project.id} value={project.id}>{project.name}</option>
