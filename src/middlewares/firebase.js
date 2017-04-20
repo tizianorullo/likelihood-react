@@ -4,6 +4,7 @@ import {PROJECT_ADD, PROJECT_FETCH} from '../actions/project'
 import {FEATURE_UPDATE, FEATURE_DELETE} from '../actions/feature'
 import {BUDGET_UPDATE} from '../actions/budget'
 import {RATE_UPDATE} from '../actions/rate'
+import {NAME_UPDATE} from '../actions/name'
 
 const config = {
   apiKey: "AIzaSyC43umHbsRhAUzieJYyEdcyWCcvGWNbpp4",
@@ -43,6 +44,11 @@ const firebaseMiddleware = store => next => action => {
       break
     case RATE_UPDATE:
       db.ref('/projects/' + store.getState().selectedProjectId + '/rate')
+        .set(action.payload)
+        .then(next(action))
+      break
+    case NAME_UPDATE:
+      db.ref('/projects/' + store.getState().selectedProjectId + '/name')
         .set(action.payload)
         .then(next(action))
       break
