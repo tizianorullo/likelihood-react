@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
-import ProjectManager from '../containers/project-manager'
-import Project from '../containers/project'
+import ProjectManager from './project-manager'
+import Project from './project'
 
 export default class App extends Component {
   render() {

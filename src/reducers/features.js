@@ -10,7 +10,12 @@ import {
 export default function(state = [], action) {
   switch (action.type) {
     case FEATURE_ADD:
-      return state.concat([{id: action.payload}])
+      return state.concat([{
+        id: action.payload,
+        name: '',
+        best: 0,
+        worst: 0
+      }])
       break
     case FEATURE_DELETE:
       return state.filter(feature => feature.id !== action.payload.id)

@@ -1,25 +1,13 @@
-import database from './database';
-
+export const PROJECT_FETCH = 'PROJECT_FETCH'
 export const PROJECT_ADD = 'PROJECT_ADD'
 export const PROJECT_SELECT = 'PROJECT_SELECT'
 
-// export function addProject(id) {
-//   const newProject = {
-//     id,
-//     name: 'New Project ' + id,
-//     features: []
-//   }
-//   return dispatch => {
-//     database.ref('/projects').push(
-//       newProject
-//     ).then(() => {
-//       dispatch({
-//         type: PROJECT_ADD,
-//         payload: newProject
-//       })
-//     })
-//   }
-// }
+export function fetchProjects(initialState = []) {
+  return {
+    type: PROJECT_FETCH,
+    payload: initialState
+  }
+}
 
 export function addProject(id) {
   const newProject = {
@@ -39,14 +27,3 @@ export function selectProject(projectId) {
     payload: projectId
   }
 }
-
-// export function fetchFeatures() {
-//   return dispatch => {
-//     database.ref('/features').once('value', snap => {
-//       return dispatch({
-//          type: FEATURE_FETCH,
-//          payload: snap.val()
-//        })
-//     })
-//   }
-// }

@@ -9,7 +9,7 @@ import {addFeature, sortFeature, fetchFeatures} from '../actions/feature'
 class List extends Component {
   constructor(props) {
     super(props)
-    this.state = this.calculateLikelihood(props);
+    this.state = this.calculateLikelihood(props)
   }
 
   componentWillReceiveProps(nextProps) {
@@ -17,7 +17,7 @@ class List extends Component {
   }
 
   calculateLikelihood(props) {
-    const state = {}
+    let state = {}
 
     let totalbest = 0
     let totalworst = 0
@@ -43,7 +43,11 @@ class List extends Component {
   }
 
   nextId() {
-    return Math.max(...this.props.features.map(feature => feature.id)) + 1
+    if(!this.props.features.length) {
+      return 0
+    }
+
+    return Math.max(...Object.keys(this.props.features).map(key => parseInt(key, 10))) + 1
   }
 
   componentDidMount() {
