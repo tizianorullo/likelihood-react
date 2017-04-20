@@ -14,7 +14,7 @@ class Project extends Component {
       return (
         <div>
           <input
-            name="project-name"
+            className="project-name"
             ref={(input) => this.nameInput = input}
             value={this.props.project.name}
             onChange={({target}) => this.props.updateName(target.value)}
