@@ -17,7 +17,7 @@ class List extends Component {
   }
 
   calculateLikelihood(props) {
-    const state = {}
+    let state = {}
 
     let totalbest = 0
     let totalworst = 0
@@ -46,7 +46,8 @@ class List extends Component {
     if(!this.props.features.length) {
       return 0
     }
-    return Math.max(...this.props.features.map(feature => feature.id)) + 1
+
+    return Math.max(...Object.keys(this.props.features).map(key => parseInt(key, 10))) + 1
   }
 
   componentDidMount() {

@@ -9,7 +9,7 @@ class ProjectManager extends Component {
     if (!this.props.projects) {
       return 0
     }
-    return Math.max(...this.props.projects.map(feature => feature.id)) + 1
+    return Math.max(...Object.keys(this.props.projects.map(key => parseInt(key, 10)))) + 1
   }
 
   renderProjects() {
