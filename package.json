@@ -9,7 +9,7 @@
   },
   "scripts": {
     "dev": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
-    "postinstall": "webpack -p",
+    "postinstall": "NODE_ENV=production webpack --config webpack-production.config.js -p",
     "start": "node server.js"
   },
   "author": "Tiziano Rullo",
