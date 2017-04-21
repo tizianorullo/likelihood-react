@@ -16,10 +16,8 @@ export default function(state = [], action) {
         best: 0,
         worst: 0
       }])
-      break
     case FEATURE_DELETE:
       return state.filter(feature => feature.id !== action.payload.id)
-      break
     case FEATURE_UPDATE:
       return state.map(feature => {
         if (feature.id === action.payload.id) {
@@ -27,10 +25,8 @@ export default function(state = [], action) {
         }
         return feature
       })
-      break
     case FEATURE_SORT:
       return arrayMove(state, action.payload.oldIndex, action.payload.newIndex)
-      break
     default:
       return state
   }

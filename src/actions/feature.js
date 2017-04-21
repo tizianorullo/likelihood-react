@@ -1,4 +1,3 @@
-export const FEATURE_FETCH = 'FEATURE_FETCH'
 export const FEATURE_UPDATE = 'FEATURE_UPDATE'
 export const FEATURE_SORT = 'FEATURE_SORT'
 export const FEATURE_ADD = 'FEATURE_ADD'
