@@ -1,17 +1,29 @@
-import React from 'react'
+import React, {Component} from 'react'
+import {connect} from 'react-redux'
+import {bindActionCreators} from 'redux'
 
-class Budget extends React.Component {
+import {updateBudget} from '../actions/budget'
+
+class Budget extends Component {
   render() {
     return (
       <div className="float-left">
-        <label htmlFor="budget">Budget</label>
+        <label>Budget</label>
         <input
           value={this.props.budget}
-          onChange={event => this.props.onBudgetChange(event.target.value)}
+          onChange={({target}) => this.props.updateBudget(target.value)}
         />
       </div>
     )
   }
 }
 
-export default Budget
+function mapStateToProps({projects, selectedProjectId}) {
+  return {budget: projects[selectedProjectId].budget}
+}
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({updateBudget}, dispatch)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Budget)

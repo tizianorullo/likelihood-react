@@ -1,50 +1,32 @@
-import React from 'react'
+import React, {Component} from 'react'
 import {SortableElement, SortableHandle} from 'react-sortable-hoc'
+import {connect} from 'react-redux'
+import {bindActionCreators} from 'redux'
 
-const Feature = SortableElement((props) => {
-  return <Item
-    {...props}
-    useDragHandle={true}
-  />
-})
+import {deleteFeature, updateFeature} from '../actions/feature'
 
-const DragHandle = SortableHandle(() => <span className="button-small drag-handle">↕️↕️</span>)
+const DragHandle = SortableHandle(() => <span className="drag-handle"><img src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-drag-512.png" width="17px" alt="drag"/></span>)
 
-class Item extends React.Component {
+class Feature extends Component {
   render() {
-    const feature = this.props.feature
-    const id = this.props.id
+    const {computed, feature, updateFeature, deleteFeature} = this.props
     return (
       <tr>
-        <td><input
-          value={feature.name}
-          onChange={event => this.props.onNameChange(id, event.target.value)}
-        /></td>
-        <td><input
-          value={feature.best}
-          onChange={event => this.props.onBestChange(id, event.target.value)}
-        /></td>
-        <td><input
-          value={feature.worst}
-          onChange={event => this.props.onWorstChange(id, event.target.value)}
-        /></td>
-        <td><input
-          value={feature.likelihood}
-          readOnly
-        /></td>
-        {/* <td><button className="button-small"
-          onClick={event => this.props.onFeatureUp(id)}
-        >Up</button></td>
-        <td><button className="button-small"
-          onClick={event => this.props.onFeatureDown(id)}
-        >Down</button></td> */}
-        <td><button className="button-small"
-          onClick={event => this.props.onDeleteFeature(id)}
-        >Delete</button></td>
-        <td><DragHandle /></td>
+        <td><input value={feature.name} onChange={({target}) => updateFeature({...feature, name: target.value})} /></td>
+        <td><input value={feature.best} onChange={({target}) => updateFeature({...feature, best: target.value})} /></td>
+        <td><input value={feature.worst} onChange={({target}) => updateFeature({...feature, worst: target.value})} /></td>
+        <td><input value={computed.likelihood + '%'} readOnly/></td>
+        <td className="delete-col"><span className="feature-delete" onClick={() => deleteFeature(feature)}>❌</span></td>
+        <td className="drag-col"><DragHandle /></td>
       </tr>
     )
   }
 }
 
-export default Feature
+const SortableFeature = SortableElement(props => <Feature {...props} />)
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({deleteFeature, updateFeature}, dispatch)
+}
+
+export default connect(null, mapDispatchToProps)(SortableFeature)

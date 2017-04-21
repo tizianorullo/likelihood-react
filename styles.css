@@ -25,6 +25,23 @@ button {
   margin-bottom: 2.5rem;
 }
 
+.project-select-wrapper {
+  margin-right: 140px;
+}
+
+.project-selector {
+  position: absolute;
+  right: 0;
+  top: 30px;
+}
+
+.project-name {
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+  color: #606c76;
+  border: none;
+}
+
 .button-small {
   font-size: 1rem;
   height: 2rem;
@@ -35,6 +52,9 @@ button {
 
 .drag-handle {
   -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   cursor: grab;
 }
 
@@ -42,11 +62,20 @@ button {
   cursor: grabbing;
 }
 
+.drag-col {
+  text-align: center;
+  vertical-align: bottom;
+}
+
 .drag-helper {
-  cursor: grabbing;
   background-color: white;
 }
 
 .drag-helper td {
   border-bottom-width: 0;
+  width: 24%;
+}
+
+.drag-helper .delete-col {
+  width: auto;
 }
